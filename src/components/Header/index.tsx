@@ -4,9 +4,8 @@ export function Header(){
     return (
         <Container>
             <Content>
-
             <img src={logo} alt="dashbard money logo"/>
-           <button type="button">New Transaction</button>
+            <button type="button">New Transaction</button>
             </Content>
        
         </Container>
