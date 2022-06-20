@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 :root {
-    --background: #161620;
+    --background: #09090A;
     --shape: #fff;
     --text-style: #FFB86C;
     --text-body: #FFC98C;
@@ -31,13 +31,7 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;// sharper fonts
 
     }
-    body, input, textarea, button{
-        font-family: 'Poppins', sans-serif;
-        font-weight:400;
-    }
-    h1, h2, h3, h4, h5, h6, strong{
-       font-weight:600; 
-    }
+    
     button{
         cursor: pointer;
     }
@@ -46,3 +40,11 @@ export const GlobalStyle = createGlobalStyle`
         cursor: not-allowed;
     }
  `;
+
+/*  body, input, textarea, button{
+    font-family: 'Poppins', sans-serif;
+    font-weight:400;
+}
+h1, h2, h3, h4, h5, h6, strong{
+   font-weight:600; 
+} */
