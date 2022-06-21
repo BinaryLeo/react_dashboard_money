@@ -4,17 +4,19 @@ export const GlobalStyle = createGlobalStyle`
 :root {
     --background: #09090A;
     --shape: #fff;
+    --table:#ececec;
     --text-style: #FFB86C;
     --text-body: #FFC98C;
     --blue: #01537E;
     --blue_light: #01659A;
     --title: #000;
+    --title-dark:#666666;
     --green: #28A277;
     
     
 }
 * {
-        margin: 0;
+    margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
