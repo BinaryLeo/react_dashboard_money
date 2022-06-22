@@ -19,6 +19,20 @@ table{
         border:0;
         background-color:var(--table);
         color:var(---text-dark);
+        &:first-child{
+            color:var(--blue);
+            font-weight:500;
+
+        }
+        &.deposit{
+            color:var(--dark_green);
+            font-weight:500;
+        }
+        &.withdraw{
+            color:var(--red);
+            font-weight:500;
+        }
+        
     }
 }
 

@@ -12,6 +12,8 @@ export const GlobalStyle = createGlobalStyle`
     --title: #000;
     --title-dark:#666666;
     --green: #28A277;
+    --dark_green:#476226;
+    --red: #7F2E2D;
     
     
 }
