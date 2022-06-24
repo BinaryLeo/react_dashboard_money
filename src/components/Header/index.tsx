@@ -3,7 +3,7 @@ import {Container, Content} from './styles';
 import logo from '../../assets/logo.svg';
 
 
-interface HeaderProps {
+interface HeaderProps { 
 onOpenNewTransactionModal: () => void;
 }
 export function Header({onOpenNewTransactionModal}: HeaderProps) {
