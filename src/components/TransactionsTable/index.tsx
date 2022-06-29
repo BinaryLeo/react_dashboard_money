@@ -31,7 +31,13 @@ export function TransactionsTable() {
           {transactions.map((transaction) => (
             <tr key={transaction.id}>
               <td>{transaction.title}</td>
-              <td className={transaction.type}>{transaction.amount}</td>
+              <td className={transaction.type}>
+              {new Intl.NumberFormat('en-CA',{
+                style: 'currency',
+                currency: 'CAD',
+                minimumFractionDigits: 2
+              }).format(transaction.amount)}
+              </td>
               <td>{transaction.category}</td>
               <td>{transaction.created_at}</td>
             </tr>
