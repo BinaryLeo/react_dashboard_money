@@ -1,6 +1,6 @@
 import {createContext, useEffect, useState, ReactNode, useContext} from 'react';
 import { api } from '../lib/api';
-import {date,dateOptions} from '../dateOptions'
+import {usecanadianTime} from './useCanadianTime'
 interface Transaction {
     id: number;
     title: string;
@@ -18,6 +18,7 @@ type TransactionInput = Omit<Transaction, 'id' | 'created_at'>;
  transactions: Transaction[]; 
  createTransaction:(transaction: TransactionInput)=> Promise<void>;
   }
+
 const TransactionsContext = createContext<TransactionContextData>({} as TransactionContextData);
 export function TransactionsProvider({children}: TransactionsProviderProps) {
 const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -29,7 +30,7 @@ const [transactions, setTransactions] = useState<Transaction[]>([]);
   }, []);
    async function createTransaction(transactionInput: TransactionInput){
       const response = await api.post("/transactions", {
-        ...transactionInput, created_at: date.toLocaleString('en-CA', dateOptions),
+        ...transactionInput, created_at: usecanadianTime,
       })
        const {transaction} = response.data ;
         setTransactions([...transactions, transaction])// Immutability concept 
