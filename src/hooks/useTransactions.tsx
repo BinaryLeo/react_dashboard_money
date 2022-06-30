@@ -30,7 +30,7 @@ const [transactions, setTransactions] = useState<Transaction[]>([]);
   }, []);
    async function createTransaction(transactionInput: TransactionInput){
       const response = await api.post("/transactions", {
-        ...transactionInput, created_at: usecanadianTime,
+        ...transactionInput, created_at: usecanadianTime(),
       })
        const {transaction} = response.data ;
         setTransactions([...transactions, transaction])// Immutability concept 
