@@ -1,6 +1,6 @@
-import {createContext, useEffect, useState, ReactNode} from 'react';
-import { api } from './lib/api';
-import {date,dateOptions} from './dateOptions'
+import {createContext, useEffect, useState, ReactNode, useContext} from 'react';
+import { api } from '../lib/api';
+import {date,dateOptions} from '../dateOptions'
 interface Transaction {
     id: number;
     title: string;
@@ -18,7 +18,7 @@ type TransactionInput = Omit<Transaction, 'id' | 'created_at'>;
  transactions: Transaction[]; 
  createTransaction:(transaction: TransactionInput)=> Promise<void>;
   }
-export const TransactionsContext = createContext<TransactionContextData>({} as TransactionContextData);
+const TransactionsContext = createContext<TransactionContextData>({} as TransactionContextData);
 export function TransactionsProvider({children}: TransactionsProviderProps) {
 const [transactions, setTransactions] = useState<Transaction[]>([]);
 
@@ -40,5 +40,9 @@ const [transactions, setTransactions] = useState<Transaction[]>([]);
     </TransactionsContext.Provider>
 
     );
+    
 }
-  
+export function useTransactions(){
+  const  context = useContext(TransactionsContext)
+  return context;
+}
