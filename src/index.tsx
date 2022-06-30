@@ -2,14 +2,7 @@ import React from 'react';
 import ReactDOM from "react-dom/client";
 import {createServer, Model} from "miragejs"
 import { App } from './App';
-const date = new Date();
-const dateOptions: Intl.DateTimeFormatOptions = {
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-  hour: '2-digit',
-  minute: '2-digit'
-};
+import {date,dateOptions} from './dateOptions'
 createServer({
    
   models:{

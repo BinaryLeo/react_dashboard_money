@@ -1,5 +1,6 @@
 import {createContext, useEffect, useState, ReactNode} from 'react';
 import { api } from './lib/api';
+import {date,dateOptions} from './dateOptions'
 interface Transaction {
     id: number;
     title: string;
@@ -8,10 +9,16 @@ interface Transaction {
     amount: number;
     created_at: string;
   }
-  interface TransactionsProviderProps {
+
+type TransactionInput = Omit<Transaction, 'id' | 'created_at'>;
+  interface TransactionsProviderProps { 
     children: ReactNode;
   }
-export const TransactionsContext = createContext<Transaction[]>([]);
+  interface TransactionContextData{
+ transactions: Transaction[]; 
+ createTransaction:(transaction: TransactionInput)=> Promise<void>;
+  }
+export const TransactionsContext = createContext<TransactionContextData>({} as TransactionContextData);
 export function TransactionsProvider({children}: TransactionsProviderProps) {
 const [transactions, setTransactions] = useState<Transaction[]>([]);
 
@@ -20,9 +27,15 @@ const [transactions, setTransactions] = useState<Transaction[]>([]);
       .get("/transactions")
       .then((response) => setTransactions(response.data.transactions));
   }, []);
-    
+   async function createTransaction(transactionInput: TransactionInput){
+      const response = await api.post("/transactions", {
+        ...transactionInput, created_at: date.toLocaleString('en-CA', dateOptions),
+      })
+       const {transaction} = response.data ;
+        setTransactions([...transactions, transaction])// Immutability concept 
+    } 
   return (
-    <TransactionsContext.Provider value={transactions}>
+    <TransactionsContext.Provider value={{transactions, createTransaction}}>
         {children}
     </TransactionsContext.Provider>
 
