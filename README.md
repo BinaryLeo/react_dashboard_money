@@ -1,6 +1,6 @@
 <div align="center" style="margin: 20px; text-align: center">
 <p> Dashboard_money</p>
-<p>A Reactjs application to management expenses and incomes</p>
+<p>A Reactjs application to manage expenses and incomes</p>
 
   [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/BinaryLeo/react_dashboard_money/blob/main/LICENSE)
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/BinaryLeo/react_dashboard_money?color=blue">
